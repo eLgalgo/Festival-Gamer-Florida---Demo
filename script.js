@@ -163,35 +163,61 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 if (canvas && !reduceMotion) {
   const ctx = canvas.getContext('2d');
   const hero = canvas.parentElement;
-  const colors = ['#a4d233', '#f7941d', '#e63451', '#8e3fb8'];
+  const colors = ['#a4d233', '#f7941d', '#e63451', '#c4f04a'];
+  const LINK_DIST = 120;
   let particles = [], raf;
   function size() {
-    canvas.width = hero.offsetWidth;
-    canvas.height = hero.offsetHeight;
-    const count = Math.min(70, Math.floor(canvas.width / 22));
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = hero.offsetWidth * dpr;
+    canvas.height = hero.offsetHeight * dpr;
+    canvas.style.width = hero.offsetWidth + 'px';
+    canvas.style.height = hero.offsetHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    const count = Math.min(90, Math.floor(w / 14));
     particles = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2.2 + 0.6,
-      vy: -(Math.random() * 0.5 + 0.12),
-      vx: (Math.random() - 0.5) * 0.25,
-      a: Math.random() * 0.5 + 0.2,
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2.4 + 1.4,
+      vy: -(Math.random() * 0.45 + 0.12),
+      vx: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.4 + 0.45,
       c: colors[Math.floor(Math.random() * colors.length)]
     }));
   }
   function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+    // líneas conectoras (efecto red)
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.hypot(dx, dy);
+        if (d < LINK_DIST) {
+          ctx.globalAlpha = (1 - d / LINK_DIST) * 0.18;
+          ctx.strokeStyle = '#a4d233';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    // puntos con glow
     particles.forEach(p => {
       p.y += p.vy; p.x += p.vx;
-      if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
+      if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
       ctx.globalAlpha = p.a;
       ctx.fillStyle = p.c;
+      ctx.shadowColor = p.c;
+      ctx.shadowBlur = 8;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
     });
+    ctx.shadowBlur = 0;
     ctx.globalAlpha = 1;
     raf = requestAnimationFrame(draw);
   }

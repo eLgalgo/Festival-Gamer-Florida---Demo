@@ -95,9 +95,10 @@ h2 .t-gamer { color:var(--green); }
 
 /* ===== HERO ===== */
 .hero {
+  position:relative;
   min-height:100vh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:7rem 1.5rem 4rem;
+  text-align:center; padding:5.5rem 1.5rem 3rem;
   background:radial-gradient(ellipse at 50% 0%, var(--purple) 0%, var(--bg-2) 45%, var(--bg) 100%);
   overflow:hidden;
 }
@@ -413,8 +414,15 @@ h2 .t-gamer { color:var(--green); }
   .podium-step.first { order:-1; }
 }
 @media (max-width:520px) {
-  .countdown { gap:.5rem; }
-  .cd-box { min-width:64px; padding:.8rem .6rem; }
-  .meta-item { min-width:130px; padding:.7rem 1rem; }
+  .hero { padding:4.5rem 1.1rem 2.5rem; }
+  .hero-badge { margin-bottom:1rem; }
+  .hero-slogan { margin-bottom:1.3rem; }
+  .hero-meta { gap:.55rem; margin-bottom:1.6rem; }
+  .meta-item { min-width:0; flex:1 1 30%; padding:.6rem .7rem; }
+  .meta-label { font-size:.6rem; }
+  .meta-value { font-size:.82rem; }
+  .countdown { gap:.5rem; margin-bottom:1.6rem; }
+  .cd-box { min-width:60px; padding:.75rem .5rem; }
+  .hero-actions { width:100%; }
   .hero-actions .btn { width:100%; }
 }
