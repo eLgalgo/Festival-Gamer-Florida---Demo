@@ -1,0 +1,9 @@
+# Archivos originales sin optimizar (las versiones web están en assets/)
+# Anclados a la raíz para no excluir assets/logo.png en sistemas case-insensitive
+/Logo.png
+/3-13.webp
+/470643508_*.jpg
+
+# Sistema
+.DS_Store
+Thumbs.db

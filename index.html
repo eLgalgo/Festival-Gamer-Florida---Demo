@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Florida Gamer Festival 5 · 4 y 5 de Julio</title>
+  <meta name="description" content="La quinta edición del Florida Gamer Festival. 4 y 5 de julio en el Estadio 10 de Julio de Florida. Torneos de FIFA, Fortnite, Valorant, League of Legends, Minecraft y más. Entrada gratuita." />
+  <meta property="og:title" content="Florida Gamer Festival 5" />
+  <meta property="og:description" content="Este mundial vivilo en Florida Gamer · 4 y 5 de julio · Entrada gratuita" />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#150a26" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <a href="#inicio" class="nav-logo">
+      <img class="logo-mark-img" src="assets/logo-icon.png" alt="Florida Gamer Festival 5" />
+      <span class="logo-text">FLORIDA GAMER <strong>5</strong></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#juegos">Juegos</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#atracciones">Atracciones</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#inscripcion" class="nav-cta">Inscribirme</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">5ª EDICIÓN · 2026</div>
+      <h1 class="hero-title">
+        <img class="hero-logo" src="assets/logo.png" alt="Florida Gamer Festival 5" />
+        <span class="visually-hidden">Florida Gamer Festival 5</span>
+      </h1>
+      <p class="hero-slogan">"Este mundial vivilo en Florida Gamer"</p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Fecha</span>
+          <span class="meta-value">4 y 5 de Julio</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Lugar</span>
+          <span class="meta-value">Estadio 10 de Julio</span>
+        </div>
+        <div class="meta-item meta-free">
+          <span class="meta-label">Entrada</span>
+          <span class="meta-value">¡Gratuita!</span>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown" id="countdown" aria-label="Cuenta regresiva">
+        <div class="cd-box"><span id="cd-days">00</span><small>Días</small></div>
+        <div class="cd-box"><span id="cd-hours">00</span><small>Horas</small></div>
+        <div class="cd-box"><span id="cd-mins">00</span><small>Min</small></div>
+        <div class="cd-box"><span id="cd-secs">00</span><small>Seg</small></div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#inscripcion" class="btn btn-primary">Inscribirme a un torneo</a>
+        <a href="#juegos" class="btn btn-ghost">Ver competencias</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><span></span></div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat"><strong data-count="40">0</strong><span>Marcas y stands</span></div>
+    <div class="stat"><strong data-count="100">0</strong><span>Máquinas de juego</span></div>
+    <div class="stat"><strong data-count="8">0</strong><span>Torneos oficiales</span></div>
+    <div class="stat"><strong data-count="5">0</strong><span>Edición</span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="sobre">
+    <div class="about-text">
+      <span class="section-tag">El evento</span>
+      <h2>El festival gamer más grande de Florida</h2>
+      <p>
+        Durante dos días, el <strong>Estadio 10 de Julio</strong> se transforma en el epicentro
+        del gaming y la tecnología en Uruguay. Competencias oficiales, zona retro, simuladores,
+        realidad virtual, robótica, stands de las mejores marcas y, sobre todo, comunidad.
+      </p>
+      <p>
+        En esta quinta edición vivimos <strong>el Mundial</strong> con pantallas gigantes,
+        torneos para todos los niveles y premios para los campeones. Vení a competir, a jugar
+        o simplemente a disfrutar. <strong>La entrada es totalmente gratuita.</strong>
+      </p>
+      <a href="#agenda" class="link-arrow">Ver la agenda completa →</a>
+    </div>
+    <div class="about-media">
+      <img src="assets/players.jpg" alt="Jugadores compitiendo en el Florida Gamer Festival" loading="lazy" />
+      <div class="about-media-glow"></div>
+    </div>
+  </section>
+
+  <!-- JUEGOS -->
+  <section class="games" id="juegos">
+    <div class="section-head">
+      <span class="section-tag">Competencias</span>
+      <h2>Elegí tu juego, demostrá tu nivel</h2>
+      <p>Torneos oficiales con árbitros, llaves eliminatorias y premios para los ganadores.</p>
+    </div>
+    <div class="games-grid" id="gamesGrid"><!-- generado por JS --></div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="agenda" id="agenda">
+    <div class="section-head">
+      <span class="section-tag">Agenda</span>
+      <h2>Dos días a pura competencia</h2>
+    </div>
+    <div class="agenda-grid">
+      <div class="day-card">
+        <div class="day-head">
+          <span class="day-name">Sábado 4</span>
+          <span class="day-time">13:00 – 20:00</span>
+        </div>
+        <ul class="timeline">
+          <li><span>13:00</span><p>Apertura de puertas y acreditaciones</p></li>
+          <li><span>14:00</span><p>Inicio fase de grupos · FIFA 1v1 y Valorant</p></li>
+          <li><span>15:30</span><p>Torneo Fortnite — Battle Royale</p></li>
+          <li><span>17:00</span><p>League of Legends · cuartos de final</p></li>
+          <li><span>18:30</span><p>Show de simuladores F1 y zona retro</p></li>
+          <li><span>20:00</span><p>Cierre día 1</p></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-head">
+          <span class="day-name">Domingo 5</span>
+          <span class="day-time">15:00 – 20:00</span>
+        </div>
+        <ul class="timeline">
+          <li><span>15:00</span><p>Apertura de puertas</p></li>
+          <li><span>15:30</span><p>Torneo Minecraft — Build Battle</p></li>
+          <li><span>16:30</span><p>Semifinales Valorant y League of Legends</p></li>
+          <li><span>18:00</span><p>Gran final FIFA 11v11</p></li>
+          <li><span>19:00</span><p>Finales y premiación de campeones</p></li>
+          <li><span>20:00</span><p>Cierre del festival 🏆</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATRACCIONES -->
+  <section class="features" id="atracciones">
+    <div class="section-head">
+      <span class="section-tag">Atracciones</span>
+      <h2>Mucho más que torneos</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature"><div class="f-ico">🏎️</div><h3>Simuladores F1</h3><p>Sentí la adrenalina de la Fórmula 1 en simuladores profesionales.</p></div>
+      <div class="feature"><div class="f-ico">🕹️</div><h3>Zona Retro</h3><p>Más de 20 máquinas arcade clásicas para los nostálgicos.</p></div>
+      <div class="feature"><div class="f-ico">🎮</div><h3>PlayStation 5</h3><p>Consolas de última generación libres para jugar.</p></div>
+      <div class="feature"><div class="f-ico">🥽</div><h3>Realidad Virtual</h3><p>Experiencias inmersivas de VR para todas las edades.</p></div>
+      <div class="feature"><div class="f-ico">🤖</div><h3>Robótica</h3><p>Demostraciones y talleres de robótica y tecnología.</p></div>
+      <div class="feature"><div class="f-ico">📺</div><h3>Streaming en vivo</h3><p>Transmisión por Twitch con los mejores streamers del país.</p></div>
+    </div>
+  </section>
+
+  <!-- INSCRIPCIÓN -->
+  <section class="register" id="inscripcion">
+    <div class="register-inner">
+      <div class="register-info">
+        <span class="section-tag">Inscripción</span>
+        <h2>Anotate y competí por el título</h2>
+        <p>Completá el formulario para reservar tu lugar en el torneo que elijas. Los cupos son limitados por categoría.</p>
+        <ul class="register-perks">
+          <li>✓ Participación gratuita</li>
+          <li>✓ Premios para los campeones</li>
+          <li>✓ Confirmación por correo</li>
+        </ul>
+      </div>
+      <form class="register-form" id="registerForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre y apellido</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+        </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="field">
+          <label for="nick">Nickname / Gamertag</label>
+          <input type="text" id="nick" name="nick" placeholder="Tu nick en el juego" required />
+        </div>
+        <div class="field">
+          <label for="juego">Torneo</label>
+          <select id="juego" name="juego" required>
+            <option value="" disabled selected>Elegí un juego</option>
+            <option>FIFA / EA FC</option>
+            <option>Fortnite</option>
+            <option>Valorant</option>
+            <option>League of Legends</option>
+            <option>Minecraft</option>
+            <option>Rocket League</option>
+            <option>Counter-Strike 2</option>
+            <option>Mortal Kombat</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Confirmar inscripción</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="location" id="ubicacion">
+    <div class="location-info">
+      <span class="section-tag">Cómo llegar</span>
+      <h2>Estadio 10 de Julio</h2>
+      <p>Florida, Uruguay. Dos jornadas de gaming en uno de los recintos más emblemáticos de la ciudad.</p>
+      <ul class="loc-details">
+        <li><strong>Sábado 4</strong> · 13:00 a 20:00 hs</li>
+        <li><strong>Domingo 5</strong> · 15:00 a 20:00 hs</li>
+        <li><strong>Entrada</strong> · Gratuita</li>
+      </ul>
+    </div>
+    <div class="location-map">
+      <iframe
+        title="Mapa Estadio 10 de Julio, Florida"
+        src="https://www.google.com/maps?q=Estadio+10+de+Julio+Florida+Uruguay&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="logo-mark-img" src="assets/logo-icon.png" alt="Florida Gamer Festival 5" />
+        <div>
+          <strong>Florida Gamer Festival 5</strong>
+          <p>Este mundial vivilo en Florida Gamer</p>
+        </div>
+      </div>
+      <div class="footer-org">
+        <span>Organizan</span>
+        <div class="org-list">
+          <span>Team Evermeet</span>
+          <span>AORUS</span>
+          <span>Dirección de Cultura, Turismo y Juventud</span>
+          <span>Florida · Departamento Abierto</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Florida Gamer Festival · Hecho con 💜 para la comunidad gamer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
