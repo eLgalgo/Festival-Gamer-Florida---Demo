@@ -114,5 +114,96 @@ form.addEventListener('submit', (ev) => {
   form.reset();
 });
 
+/* --- Barra de progreso de scroll --- */
+const progress = document.getElementById('scrollProgress');
+const toTop = document.getElementById('toTop');
+function onScroll() {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  if (progress) progress.style.width = (scrolled * 100) + '%';
+  if (toTop) toTop.classList.toggle('show', h.scrollTop > 600);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* --- Agregar al calendario (.ics universal) --- */
+const calBtn = document.getElementById('addCalendar');
+if (calBtn) {
+  calBtn.addEventListener('click', () => {
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Florida Gamer Festival//ES',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      'UID:fg5-2026@floridagamer',
+      'DTSTAMP:20260601T000000Z',
+      'DTSTART:20260704T160000Z',
+      'DTEND:20260705T230000Z',
+      'SUMMARY:Florida Gamer Festival 5',
+      'DESCRIPTION:Este mundial vivilo en Florida Gamer. Torneos de FIFA\\, Fortnite\\, Valorant\\, League of Legends\\, Minecraft y más. Entrada gratuita.',
+      'LOCATION:Estadio 10 de Julio, Florida, Uruguay',
+      'URL:https://elgalgo.github.io/Festival-Gamer-Florida---Demo/',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'florida-gamer-festival-5.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+}
+
+/* --- Partículas del hero --- */
+const canvas = document.getElementById('heroParticles');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (canvas && !reduceMotion) {
+  const ctx = canvas.getContext('2d');
+  const hero = canvas.parentElement;
+  const colors = ['#a4d233', '#f7941d', '#e63451', '#8e3fb8'];
+  let particles = [], raf;
+  function size() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+    const count = Math.min(70, Math.floor(canvas.width / 22));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.2 + 0.6,
+      vy: -(Math.random() * 0.5 + 0.12),
+      vx: (Math.random() - 0.5) * 0.25,
+      a: Math.random() * 0.5 + 0.2,
+      c: colors[Math.floor(Math.random() * colors.length)]
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y += p.vy; p.x += p.vx;
+      if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if (p.x < -10) p.x = canvas.width + 10;
+      if (p.x > canvas.width + 10) p.x = -10;
+      ctx.globalAlpha = p.a;
+      ctx.fillStyle = p.c;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(draw);
+  }
+  size(); draw();
+  let resizeT;
+  window.addEventListener('resize', () => { clearTimeout(resizeT); resizeT = setTimeout(size, 200); });
+  // Pausar cuando el hero no está visible (ahorra batería)
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { if (!raf) draw(); }
+    else { cancelAnimationFrame(raf); raf = null; }
+  }, { threshold: 0 }).observe(hero);
+}
+
 /* --- Año dinámico en footer (por si cambia) --- */
 document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());

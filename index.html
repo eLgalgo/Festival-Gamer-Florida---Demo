@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Florida Gamer Festival 5 · 4 y 5 de Julio</title>
   <meta name="description" content="La quinta edición del Florida Gamer Festival. 4 y 5 de julio en el Estadio 10 de Julio de Florida. Torneos de FIFA, Fortnite, Valorant, League of Legends, Minecraft y más. Entrada gratuita." />
+  <link rel="canonical" href="https://elgalgo.github.io/Festival-Gamer-Florida---Demo/" />
   <meta property="og:title" content="Florida Gamer Festival 5" />
   <meta property="og:description" content="Este mundial vivilo en Florida Gamer · 4 y 5 de julio · Entrada gratuita" />
-  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:image" content="https://elgalgo.github.io/Festival-Gamer-Florida---Demo/assets/logo.png" />
+  <meta property="og:url" content="https://elgalgo.github.io/Festival-Gamer-Florida---Demo/" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_UY" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#150a26" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/logo-icon.png" />
@@ -16,8 +20,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Festival",
+    "name": "Florida Gamer Festival 5",
+    "description": "La quinta edición del festival gamer más grande de Florida, Uruguay. Torneos de FIFA, Fortnite, Valorant, League of Legends, Minecraft y más. Entrada gratuita.",
+    "image": "https://elgalgo.github.io/Festival-Gamer-Florida---Demo/assets/logo.png",
+    "startDate": "2026-07-04T13:00:00-03:00",
+    "endDate": "2026-07-05T20:00:00-03:00",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Estadio 10 de Julio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Florida",
+        "addressCountry": "UY"
+      }
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "UYU",
+      "availability": "https://schema.org/InStock",
+      "url": "https://elgalgo.github.io/Festival-Gamer-Florida---Demo/#inscripcion"
+    },
+    "organizer": [
+      { "@type": "Organization", "name": "Team Evermeet" },
+      { "@type": "Organization", "name": "Dirección de Cultura, Turismo y Juventud · Florida" }
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- BARRA DE PROGRESO -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
@@ -30,6 +70,7 @@
       <a href="#juegos">Juegos</a>
       <a href="#agenda">Agenda</a>
       <a href="#atracciones">Atracciones</a>
+      <a href="#premios">Premios</a>
       <a href="#ubicacion">Ubicación</a>
       <a href="#inscripcion" class="nav-cta">Inscribirme</a>
     </nav>
@@ -40,6 +81,7 @@
 
   <!-- HERO -->
   <section class="hero" id="inicio">
+    <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
@@ -74,7 +116,7 @@
 
       <div class="hero-actions">
         <a href="#inscripcion" class="btn btn-primary">Inscribirme a un torneo</a>
-        <a href="#juegos" class="btn btn-ghost">Ver competencias</a>
+        <button type="button" class="btn btn-ghost" id="addCalendar">📅 Agregar al calendario</button>
       </div>
     </div>
     <div class="hero-scroll"><span></span></div>
@@ -159,6 +201,16 @@
     </div>
   </section>
 
+  <!-- BANDA INMERSIVA -->
+  <section class="experience" aria-label="La experiencia Florida Gamer">
+    <div class="experience-overlay"></div>
+    <div class="experience-content">
+      <span class="section-tag">La experiencia</span>
+      <h2>Dos días que se viven, no se cuentan</h2>
+      <p>Miles de gamers, las mejores marcas y el estadio entero latiendo al ritmo del juego.</p>
+    </div>
+  </section>
+
   <!-- ATRACCIONES -->
   <section class="features" id="atracciones">
     <div class="section-head">
@@ -172,6 +224,33 @@
       <div class="feature"><div class="f-ico">🥽</div><h3>Realidad Virtual</h3><p>Experiencias inmersivas de VR para todas las edades.</p></div>
       <div class="feature"><div class="f-ico">🤖</div><h3>Robótica</h3><p>Demostraciones y talleres de robótica y tecnología.</p></div>
       <div class="feature"><div class="f-ico">📺</div><h3>Streaming en vivo</h3><p>Transmisión por Twitch con los mejores streamers del país.</p></div>
+    </div>
+  </section>
+
+  <!-- PREMIOS -->
+  <section class="prizes" id="premios">
+    <div class="section-head">
+      <span class="section-tag">Premios</span>
+      <h2>Competí por la gloria… y algo más</h2>
+      <p>Los campeones de cada torneo se llevan trofeo, premios y el título de mejores del festival.</p>
+    </div>
+    <div class="podium">
+      <div class="podium-step second">
+        <div class="medal">🥈</div>
+        <h3>2º Puesto</h3>
+        <p>Periféricos gamer AORUS + medalla</p>
+      </div>
+      <div class="podium-step first">
+        <div class="medal">🏆</div>
+        <h3>1º Puesto</h3>
+        <p>Trofeo de campeón, premio mayor y kit gamer completo</p>
+        <span class="podium-tag">Campeón</span>
+      </div>
+      <div class="podium-step third">
+        <div class="medal">🥉</div>
+        <h3>3º Puesto</h3>
+        <p>Merchandising del evento + medalla</p>
+      </div>
     </div>
   </section>
 
@@ -221,6 +300,40 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-head">
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2>Todo lo que necesitás saber</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿La entrada tiene costo?</summary>
+        <p>No. La entrada al Florida Gamer Festival es totalmente <strong>gratuita</strong> los dos días.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Tengo que inscribirme para participar de los torneos?</summary>
+        <p>Sí. Para competir en cualquier torneo completá el <a href="#inscripcion">formulario de inscripción</a>. Los cupos son limitados por categoría, así que conviene anotarse con tiempo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo ir solo a jugar y mirar sin competir?</summary>
+        <p>¡Claro! Hay consolas libres, zona retro, simuladores, realidad virtual y mucho más. Podés venir a disfrutar sin inscribirte a ningún torneo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Es un evento para todas las edades?</summary>
+        <p>Sí, es un evento familiar. Hay actividades para todas las edades. Los menores deben ir acompañados por un adulto responsable.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Necesito llevar mi propio equipo?</summary>
+        <p>No es necesario: el festival cuenta con más de 100 máquinas y equipamiento. Para algunos torneos podés usar tus propios periféricos (mouse, teclado, joystick); los detalles se confirman al inscribirte.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Dónde es y qué días?</summary>
+        <p>En el <strong>Estadio 10 de Julio</strong> de Florida, Uruguay. El <strong>sábado 4</strong> de 13:00 a 20:00 y el <strong>domingo 5</strong> de 15:00 a 20:00.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- UBICACIÓN -->
   <section class="location" id="ubicacion">
     <div class="location-info">
@@ -232,6 +345,7 @@
         <li><strong>Domingo 5</strong> · 15:00 a 20:00 hs</li>
         <li><strong>Entrada</strong> · Gratuita</li>
       </ul>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Estadio+10+de+Julio+Florida+Uruguay" target="_blank" rel="noopener">Cómo llegar →</a>
     </div>
     <div class="location-map">
       <iframe
@@ -265,6 +379,9 @@
       <p>© 2026 Florida Gamer Festival · Hecho con 💜 para la comunidad gamer</p>
     </div>
   </footer>
+
+  <!-- VOLVER ARRIBA -->
+  <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
 
   <script src="script.js"></script>
 </body>
